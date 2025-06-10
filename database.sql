@@ -40,3 +40,17 @@ CREATE TABLE TCustomers
   ,intGenderID       INTEGER          NOT NULL
   ,CONSTRAINT TCustomers_PK PRIMARY KEY (intCustomerID)
 )
+
+CREATE TABLE TCities
+(
+  intCityID		INTEGER		NOT NULL
+ ,strCity		VARCHAR(255)	NOT NULL
+ ,CONSTRAINT TCities_PK PRIMARY KEY ( intCityID )
+)
+
+CREATE TABLE TStates
+(
+ intStateID		INTEGER		NOT NULL
+ ,strState		VARCHAR(255)	NOT NULL
+ ,CONSTRAINT TStates_PK PRIMARY KEY ( intStateID )
+)
