@@ -21,3 +21,7 @@ IF OBJECT_ID ('TProductCategories')    IS NOT NULL    DROP TABLE TorderProducts
 IF OBJECT_ID ('TVendors')              IS NOT NULL    DROP TABLE TVendors
 IF OBJECT_ID ('TCities')               IS NOT NULL    DROP TABLE TCities
 IF OBJECT_ID ('TStates')               IS NOT NULL    DROP TABLE TStates
+
+-- --------------------------------------------------------------------------------
+--	Step #1 : Create table 
+-- --------------------------------------------------------------------------------
