@@ -127,3 +127,23 @@ CREATE TABLE TOrderProducts
 ,intProductID		    INTEGER		NOT NULL
 ,CONSTRAINT TTOrderProducts_PK PRIMARY KEY ( intOrderProductID )
 )
+
+
+-- --------------------------------------------------------------------------------
+--	Step #2 : Establish Referential Integrity 
+-- --------------------------------------------------------------------------------
+--
+-- #	Child				      Parent				        Column
+-- -	-----				      ------				        ---------
+-- 1	TOrders				    TCustomers			      intCustomerID	
+-- 2	TProducts			    TVendors			        intVendorID
+-- 3	TOrderProducts		TOrders				        intOrderID
+-- 4	TOrderProducts		TProducts			        intProductID
+-- 5	TCustomers			  TStates				        intStateID
+-- 6	TCustomers			  TCities				        intCityID
+-- 7	TCustomers			  TGenders			        intGenderID
+-- 8	TCustomers			  TRaces				        intRaceID
+-- 9	TOrders				    TStatuses			        intStatusID
+-- 10	TProducts			    TProductCategories		intProductCategoryID
+-- 11	TVendors			    TStates				        intStateID
+-- 12	TVendors			    TCities				        intCityID
