@@ -97,3 +97,10 @@ CREATE TABLE TProducts
 ,intInventory		INTEGER		NOT NULL
 ,CONSTRAINT TProducts_PK PRIMARY KEY ( intProductID )
 )
+
+CREATE TABLE TProductCategories	
+(
+ intProductCategoryID	INTEGER		NOT NULL
+,strProductCategory	VARCHAR(255)	NOT NULL
+,CONSTRAINT TProductCategories_PK PRIMARY KEY ( intProductCategoryID )
+)
