@@ -85,3 +85,15 @@ CREATE TABLE TStatuses
 ,strStatus		VARCHAR(255)	NOT NULL
 ,CONSTRAINT TStatuses_PK PRIMARY KEY ( intStatusID )
 )
+
+CREATE TABLE TProducts
+(
+ intProductID		INTEGER		NOT NULL
+,intVendorID		INTEGER		NOT NULL
+,strProductName		VARCHAR(255)	NOT NULL
+,monCostofProduct	MONEY		NOT NULL
+,monRetailCost		MONEY		NOT NULL
+,intProductCategoryID	INTEGER		NOT NULL
+,intInventory		INTEGER		NOT NULL
+,CONSTRAINT TProducts_PK PRIMARY KEY ( intProductID )
+)
