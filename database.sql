@@ -68,3 +68,13 @@ CREATE TABLE TGenders
 ,strGender		VARCHAR(255)	NOT NULL
 ,CONSTRAINT TGenders_PK PRIMARY KEY ( intGenderID )
 )
+
+CREATE TABLE TOrders
+(
+ intOrderID		INTEGER		NOT NULL
+,intCustomerID		INTEGER		NOT NULL
+,strOrderNumber		VARCHAR(255)	NOT NULL
+,intStatusID		INTEGER		NOT NULL
+,dtmOrderDate		DATETIME	NOT NULL
+,CONSTRAINT TOrders_PK PRIMARY KEY ( intOrderID )
+)
