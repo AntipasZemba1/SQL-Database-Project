@@ -270,3 +270,25 @@ VALUES	 ( 1, 1, 1 )
 -- --------------------------------------------------------------------------------
 --	Step #4 : Explicit Joins
 -- --------------------------------------------------------------------------------
+
+--Write an explicit join that shows each customers names, order dates, 
+--and the products on the order.  Order the list based on customer and order date. 
+
+Select	 TC.intCustomerID
+	,TC.strFirstName
+	,TC.strLastName
+	,TOR.intOrderID
+	,TOR.dtmOrderDate
+	,TP.intProductID
+	,TP.strProductName
+From TCustomers AS TC 
+JOIN TOrders AS TOR
+	ON TC.intCustomerID = TOR.intCustomerID
+JOIN TOrderProducts AS TORP
+	ON TORP.intOrderID = TOR.intOrderID
+JOIN TProducts AS TP
+	ON TP.intProductID = TORP.intProductID
+Order By 
+	TC.strLastName ASC
+	,TC.strFirstName ASC
+	,TOR.dtmOrderDate DESC
