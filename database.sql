@@ -195,3 +195,73 @@ FOREIGN KEY ( intStateID ) REFERENCES TStates (intStateID ) ON DELETE CASCADE
 --12
 ALTER TABLE TVendors ADD CONSTRAINT TVendors_TCities_FK 
 FOREIGN KEY ( intCityID ) REFERENCES TCities (intCityID ) ON DELETE CASCADE
+
+
+-- --------------------------------------------------------------------------------
+--	Step #3 : Add Data - INSERTS
+-- --------------------------------------------------------------------------------
+INSERT INTO TStates( intStateID, strState)
+VALUES	           (1, 'Ohio')
+	                ,(2, 'Kentucky')
+	                ,(3, 'Indiana')
+
+INSERT INTO TCities( intCityID, strCity)
+VALUES	           (1, 'Cincinnati')
+                  ,(2, 'Florence')
+                  ,(3, 'Norwood')
+                  ,(4, 'Milford')
+                  ,(5, 'West Chester')
+
+INSERT INTO TRaces( intRaceID, strRace)
+VALUES	         (1, 'Hispanic')
+                ,(2, 'African American')
+                ,(3, 'Cuacasion')
+                ,(4, 'Asian')
+
+INSERT INTO TGenders( intGenderID, strGender)
+VALUES	            (1, 'Male')
+                  ,(2, 'Female')
+                  ,(3, 'Other')
+
+INSERT INTO TCustomers (intCustomerID, strFirstName, strLastName, strAddress, intCityID, intStateID, strZip, dtmDateOfBirth, intRaceID, intGenderID)
+VALUES	               (1, 'James', 'Jones', '321 Elm St.', 1, 1, '45201', '1/1/1997', 1, 1)
+                      ,(2, 'Sally', 'Smith', '987 Main St.', 3, 1, '45218', '12/1/1999', 2, 2)
+                      ,(3, 'Jose', 'Hernandez', '1569 Windisch Rd.', 5, 1, '45069', '9/23/1998', 1, 1)
+                      ,(4, 'Lan', 'Kim', '44561 Oak Ave.', 4, 1, '45246', '6/11/1999', 4, 1)
+                      ,(5, 'Bob', 'Nields', '44561 Oak Ave.', 4, 1, '45246', '6/11/1999', 4, 1)
+
+INSERT INTO TStatuses( intStatusID, strStatus)
+VALUES	             (1, 'Ordered')
+                    ,(2, 'Shipped')
+                    ,(3, 'Delivered')
+
+
+INSERT INTO TOrders ( intOrderID, intCustomerID, strOrderNumber, intStatusID, dtmOrderDate)
+VALUES	           ( 1, 1, '10101010', 2, '8/28/2017')
+                  ,( 2, 1, '20202020', 1, '8/28/2007')
+                  ,( 3, 2, '30303030', 3, '6/28/2017')
+					        ,( 4, 4, '40404040', 3, '5/28/2007')
+
+INSERT INTO TVendors ( intVendorID, strVendorName, strAddress, intCityID, intStateID, strZip, strContactFirstName, strContactLastName, strContactPhone, strContactEmail)
+VALUES	 (1, 'TreesRUs', '321 Elm St.', 1, 1, '45201', 'Iwana', 'Cleantooth', '555-555-5555', 'Icleantooth@treesrus.com')
+        ,(2, 'ShirtsRUs', '987 Main St.', 3, 1, '45218', 'Eilene', 'Totheright' , '666-666-6666', 'etotheright@shirtsrus.com')
+        ,(3, 'ToysRUs', '1569 Windisch Rd.', 5, 1, '45069', 'Mike', 'Metosing', '888-888-8888', 'mmetosing@toysrus.com')					  
+
+INSERT INTO TProductCategories( intProductCategoryID, strProductCategory)
+VALUES	                      (1, 'Every Day')
+                              ,(2, 'Apparel')
+                              ,(3, 'Electronics')
+
+
+INSERT INTO TProducts( intProductID, intVendorID, strProductName, monCostofProduct, monRetailCost, intProductCategoryID, intInventory)
+VALUES	             (1, 1,'Toothpicks', .10, .40, 1, 100000)
+                    ,(2, 2,'T-Shirts', 5.10, 15.40, 2, 2000)
+                    ,(3, 3,'uPlay', 44.10, 85.40, 3, 3)
+
+INSERT INTO TOrderProducts ( intOrderProductID, intOrderID, intProductID)
+VALUES	 ( 1, 1, 1 )
+        ,( 2, 1, 2 )
+        ,( 3, 2, 3 )
+        ,( 4, 3, 2 )
+        ,( 5, 3, 3 )
+        ,( 6, 4, 3 )
