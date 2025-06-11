@@ -362,3 +362,9 @@ Where
 	      and TG.strGender = 'Male'
 Order By 
 	      TR.intRaceID 
+
+
+
+-- Write an explicit join that shows the list of vendors of which 
+-- products were ordered based on the customer's state.  
+-- Order the result set by state. 
