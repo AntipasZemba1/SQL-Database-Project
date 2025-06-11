@@ -119,3 +119,11 @@ CREATE TABLE TVendors
 ,strContactEmail	VARCHAR(255)	    NOT NULL
 ,CONSTRAINT TVendors_PK PRIMARY KEY ( intVendorID )
 )
+
+CREATE TABLE TOrderProducts
+(
+ intOrderProductID	    INTEGER		NOT NULL
+,intOrderID		        INTEGER		NOT NULL
+,intProductID		    INTEGER		NOT NULL
+,CONSTRAINT TTOrderProducts_PK PRIMARY KEY ( intOrderProductID )
+)
