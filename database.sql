@@ -316,3 +316,21 @@ Order By
         ,TP.monRetailCost DESC
 
 
+-- Write an explicit join that shows all products and 
+-- their inventory and their vendors name and contact information 
+-- for products who inventory is less than 10. 
+
+Select   TP.intProductID
+        ,TP.strProductName
+        ,TP.intInventory
+        ,TV.intVendorID
+        ,TV.strVendorName
+        ,TV.strContactFirstName
+        ,TV.strContactLastName		
+From TProducts AS TP 
+JOIN TVendors AS TV
+	      ON TV.intVendorID = TP.intVendorID
+Where 
+	      TP.intInventory < 10	  
+Order By 
+	      TP.strProductName
