@@ -271,8 +271,8 @@ VALUES	 ( 1, 1, 1 )
 --	Step #4 : Explicit Joins
 -- --------------------------------------------------------------------------------
 
---Write an explicit join that shows each customers names, order dates, 
---and the products on the order.  Order the list based on customer and order date. 
+-- Write an explicit join that shows each customers names, order dates, 
+-- and the products on the order.  Order the list based on customer and order date. 
 
 Select	 TC.intCustomerID
 	      ,TC.strFirstName
@@ -292,3 +292,27 @@ Order By
         TC.strLastName ASC
         ,TC.strFirstName ASC
         ,TOR.dtmOrderDate DESC
+
+
+-- Write an explicit join that shows all products. 
+-- Show and order the list by vendor name and product category and 
+-- retail price (highest price first - lowest price last). 
+
+Select   TP.intProductID
+        ,TP.strProductName
+        ,TP.monRetailCost
+        ,TV.intVendorID
+        ,TV.strVendorName
+        ,TPC.intProductCategoryID
+        ,TPC.strProductCategory		
+From TProducts AS TP 
+JOIN TProductCategories AS TPC
+	      ON TP.intProductCategoryID = TPC.intProductCategoryID
+JOIN TVendors AS TV
+	      ON TV.intVendorID = TP.intVendorID
+Order By 
+        TV.strVendorName
+        ,TPC.strProductCategory
+        ,TP.monRetailCost DESC
+
+
