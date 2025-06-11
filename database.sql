@@ -334,3 +334,31 @@ Where
 	      TP.intInventory < 10	  
 Order By 
 	      TP.strProductName
+
+
+-- Write an explicit join that shows all products order by males older than 21.  
+-- Show and order the list based on the customer's race. 
+
+Select	 TC.intCustomerID
+        ,TC.strFirstName
+        ,TC.strLastName
+        ,TOR.intOrderID
+        ,TOR.dtmOrderDate
+        ,TP.intProductID
+        ,TP.strProductName
+From TCustomers AS TC 
+JOIN TOrders AS TOR
+	      ON TC.intCustomerID = TOR.intCustomerID
+JOIN TOrderProducts AS TORP
+	      ON TORP.intOrderID = TOR.intOrderID
+JOIN TProducts AS TP
+	      ON TP.intProductID = TORP.intProductID
+JOIN TGenders AS TG 
+	      ON TG.intGenderID = TC.intGenderID
+JOIN TRaces AS TR
+	      ON TR.intRaceID = TC.intRaceID
+Where 
+	      TC.dtmDateOfBirth < '1/1/1997'
+	      and TG.strGender = 'Male'
+Order By 
+	      TR.intRaceID 
