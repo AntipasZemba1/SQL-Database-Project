@@ -78,3 +78,10 @@ CREATE TABLE TOrders
 ,dtmOrderDate		DATETIME	NOT NULL
 ,CONSTRAINT TOrders_PK PRIMARY KEY ( intOrderID )
 )
+
+CREATE TABLE TStatuses
+(
+ intStatusID		INTEGER		NOT NULL
+,strStatus		VARCHAR(255)	NOT NULL
+,CONSTRAINT TStatuses_PK PRIMARY KEY ( intStatusID )
+)
