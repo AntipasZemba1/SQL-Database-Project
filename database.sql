@@ -64,18 +64,18 @@ CREATE TABLE TRaces
 
 CREATE TABLE TGenders
 (
- intGenderID		INTEGER		NOT NULL
-,strGender		VARCHAR(255)	NOT NULL
+ intGenderID		INTEGER		    NOT NULL
+,strGender		    VARCHAR(255)	NOT NULL
 ,CONSTRAINT TGenders_PK PRIMARY KEY ( intGenderID )
 )
 
 CREATE TABLE TOrders
 (
- intOrderID		INTEGER		NOT NULL
-,intCustomerID		INTEGER		NOT NULL
+ intOrderID		    INTEGER		    NOT NULL
+,intCustomerID		INTEGER		    NOT NULL
 ,strOrderNumber		VARCHAR(255)	NOT NULL
-,intStatusID		INTEGER		NOT NULL
-,dtmOrderDate		DATETIME	NOT NULL
+,intStatusID		INTEGER		    NOT NULL
+,dtmOrderDate		DATETIME	    NOT NULL
 ,CONSTRAINT TOrders_PK PRIMARY KEY ( intOrderID )
 )
 
@@ -88,13 +88,13 @@ CREATE TABLE TStatuses
 
 CREATE TABLE TProducts
 (
- intProductID		INTEGER		NOT NULL
-,intVendorID		INTEGER		NOT NULL
+ intProductID		INTEGER		    NOT NULL
+,intVendorID		INTEGER		    NOT NULL
 ,strProductName		VARCHAR(255)	NOT NULL
-,monCostofProduct	MONEY		NOT NULL
-,monRetailCost		MONEY		NOT NULL
+,monCostofProduct	MONEY		    NOT NULL
+,monRetailCost		MONEY		    NOT NULL
 ,intProductCategoryID	INTEGER		NOT NULL
-,intInventory		INTEGER		NOT NULL
+,intInventory		INTEGER		    NOT NULL
 ,CONSTRAINT TProducts_PK PRIMARY KEY ( intProductID )
 )
 
@@ -103,4 +103,19 @@ CREATE TABLE TProductCategories
  intProductCategoryID	INTEGER		NOT NULL
 ,strProductCategory	VARCHAR(255)	NOT NULL
 ,CONSTRAINT TProductCategories_PK PRIMARY KEY ( intProductCategoryID )
+)
+
+CREATE TABLE TVendors
+(
+ intVendorID		INTEGER		        NOT NULL
+,strVendorName		VARCHAR(255)	    NOT NULL
+,strAddress		VARCHAR(255)	        NOT NULL
+,intCityID		INTEGER		            NOT NULL
+,intStateID		INTEGER		            NOT NULL
+,strZip			VARCHAR(255)	        NOT NULL
+,strContactFirstName	VARCHAR(255)	NOT NULL
+,strContactLastName	VARCHAR(255)	    NOT NULL
+,strContactPhone	VARCHAR(255)	    NOT NULL
+,strContactEmail	VARCHAR(255)	    NOT NULL
+,CONSTRAINT TVendors_PK PRIMARY KEY ( intVendorID )
 )
