@@ -368,3 +368,23 @@ Order By
 -- Write an explicit join that shows the list of vendors of which 
 -- products were ordered based on the customer's state.  
 -- Order the result set by state. 
+
+Select Distinct  TV.strVendorName
+                ,TV.intVendorID
+                ,TP.intProductID
+                ,TP.strProductName
+                ,TS.intStateID
+                ,TS.strState
+From TCustomers AS TC 
+JOIN TOrders AS TOR
+	              ON TC.intCustomerID = TOR.intCustomerID
+JOIN TOrderProducts AS TORP
+	              ON TORP.intOrderID = TOR.intOrderID
+JOIN TProducts AS TP
+	              ON TP.intProductID = TORP.intProductID
+JOIN TStates AS TS 
+	              ON TS.intStateID = TC.intStateID
+JOIN TVendors AS TV
+	              ON TV.intVendorID = TP.intVendorID
+Order By 
+	      TS.strState, TV.strVendorName
