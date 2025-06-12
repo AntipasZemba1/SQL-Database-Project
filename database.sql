@@ -43,78 +43,78 @@ CREATE TABLE TCustomers
 
 CREATE TABLE TCities
 (
-  intCityID		INTEGER		    NOT NULL
+  intCityID		INTEGER		  NOT NULL
  ,strCity		VARCHAR(255)	  NOT NULL
  ,CONSTRAINT TCities_PK PRIMARY KEY ( intCityID )
 )
 
 CREATE TABLE TStates
 (
- intStateID		INTEGER		    NOT NULL
+ intStateID		INTEGER		NOT NULL
  ,strState		VARCHAR(255)	NOT NULL
  ,CONSTRAINT TStates_PK PRIMARY KEY ( intStateID )
 )
 
 CREATE TABLE TRaces
 (
- intRaceID		INTEGER		    NOT NULL
+ intRaceID		INTEGER		NOT NULL
 ,strRace		  VARCHAR(255)	NOT NULL
 ,CONSTRAINT TRaces_PK PRIMARY KEY ( intRaceID )
 )
 
 CREATE TABLE TGenders
 (
- intGenderID		  INTEGER		    NOT NULL
-,strGender		    VARCHAR(255)	NOT NULL
+ intGenderID		  INTEGER	    NOT NULL
+,strGender		  VARCHAR(255)	    NOT NULL
 ,CONSTRAINT TGenders_PK PRIMARY KEY ( intGenderID )
 )
 
 CREATE TABLE TOrders
 (
- intOrderID		    INTEGER		    NOT NULL
+ intOrderID		INTEGER		    NOT NULL
 ,intCustomerID		INTEGER		    NOT NULL
-,strOrderNumber		VARCHAR(255)	NOT NULL
-,intStatusID		  INTEGER		    NOT NULL
-,dtmOrderDate		  DATETIME	    NOT NULL
+,strOrderNumber		VARCHAR(255)	    NOT NULL
+,intStatusID		INTEGER		    NOT NULL
+,dtmOrderDate		DATETIME	    NOT NULL
 ,CONSTRAINT TOrders_PK PRIMARY KEY ( intOrderID )
 )
 
 CREATE TABLE TStatuses
 (
  intStatusID		INTEGER		    NOT NULL
-,strStatus		  VARCHAR(255)	NOT NULL
+,strStatus		VARCHAR(255)	    NOT NULL
 ,CONSTRAINT TStatuses_PK PRIMARY KEY ( intStatusID )
 )
 
 CREATE TABLE TProducts
 (
- intProductID		      INTEGER		    NOT NULL
-,intVendorID		      INTEGER		    NOT NULL
+ intProductID		    INTEGER		NOT NULL
+,intVendorID		    INTEGER		NOT NULL
 ,strProductName		    VARCHAR(255)	NOT NULL
-,monCostofProduct	    MONEY		      NOT NULL
-,monRetailCost		    MONEY		      NOT NULL
-,intProductCategoryID	INTEGER		    NOT NULL
-,intInventory		      INTEGER		    NOT NULL
+,monCostofProduct	    MONEY		NOT NULL
+,monRetailCost		    MONEY		NOT NULL
+,intProductCategoryID	    INTEGER		NOT NULL
+,intInventory		    INTEGER		NOT NULL
 ,CONSTRAINT TProducts_PK PRIMARY KEY ( intProductID )
 )
 
 CREATE TABLE TProductCategories	
 (
  intProductCategoryID	    INTEGER		NOT NULL
-,strProductCategory	      VARCHAR(255)	NOT NULL
+,strProductCategory	    VARCHAR(255)	NOT NULL
 ,CONSTRAINT TProductCategories_PK PRIMARY KEY ( intProductCategoryID )
 )
 
 CREATE TABLE TVendors
 (
- intVendorID		      INTEGER		        NOT NULL
+ intVendorID		    INTEGER		    NOT NULL
 ,strVendorName		    VARCHAR(255)	    NOT NULL
-,strAddress		        VARCHAR(255)	    NOT NULL
-,intCityID		        INTEGER		        NOT NULL
-,intStateID		        INTEGER		        NOT NULL
-,strZip			          VARCHAR(255)	    NOT NULL
-,strContactFirstName	VARCHAR(255)	    NOT NULL
-,strContactLastName	  VARCHAR(255)	    NOT NULL
+,strAddress		    VARCHAR(255)	    NOT NULL
+,intCityID		    INTEGER		    NOT NULL
+,intStateID		    INTEGER		    NOT NULL
+,strZip			    VARCHAR(255)	    NOT NULL
+,strContactFirstName	    VARCHAR(255)	    NOT NULL
+,strContactLastName	    VARCHAR(255)	    NOT NULL
 ,strContactPhone	    VARCHAR(255)	    NOT NULL
 ,strContactEmail	    VARCHAR(255)	    NOT NULL
 ,CONSTRAINT TVendors_PK PRIMARY KEY ( intVendorID )
@@ -123,8 +123,8 @@ CREATE TABLE TVendors
 CREATE TABLE TOrderProducts
 (
  intOrderProductID	    INTEGER		NOT NULL
-,intOrderID		          INTEGER		NOT NULL
-,intProductID		        INTEGER		NOT NULL
+,intOrderID		    INTEGER		NOT NULL
+,intProductID		    INTEGER		NOT NULL
 ,CONSTRAINT TTOrderProducts_PK PRIMARY KEY ( intOrderProductID )
 )
 
@@ -133,20 +133,20 @@ CREATE TABLE TOrderProducts
 --	Step #2 : Establish Referential Integrity 
 -- --------------------------------------------------------------------------------
 --
--- #	Child				      Parent				        Column
--- -	-----				      ------				        ---------
--- 1	TOrders				    TCustomers			      intCustomerID	
--- 2	TProducts			    TVendors			        intVendorID
--- 3	TOrderProducts		TOrders				        intOrderID
--- 4	TOrderProducts		TProducts			        intProductID
--- 5	TCustomers			  TStates				        intStateID
--- 6	TCustomers			  TCities				        intCityID
--- 7	TCustomers			  TGenders			        intGenderID
--- 8	TCustomers			  TRaces				        intRaceID
--- 9	TOrders				    TStatuses			        intStatusID
--- 10	TProducts			    TProductCategories		intProductCategoryID
--- 11	TVendors			    TStates				        intStateID
--- 12	TVendors			    TCities				        intCityID
+-- #	Child			Parent				Column
+-- -	-----		 	------				---------
+-- 1	TOrders			TCustomers			intCustomerID	
+-- 2	TProducts		TVendors			intVendorID
+-- 3	TOrderProducts		TOrders				intOrderID
+-- 4	TOrderProducts		TProducts			intProductID
+-- 5	TCustomers		TStates				intStateID
+-- 6	TCustomers		TCities				intCityID
+-- 7	TCustomers		TGenders			intGenderID
+-- 8	TCustomers		TRaces				intRaceID
+-- 9	TOrders			TStatuses			intStatusID
+-- 10	TProducts		TProductCategories		intProductCategoryID
+-- 11	TVendors		TStates				intStateID
+-- 12	TVendors		TCities				intCityID
 
 --1
 ALTER TABLE TOrders ADD CONSTRAINT TOrders_TCustomers_FK 
@@ -202,8 +202,8 @@ FOREIGN KEY ( intCityID ) REFERENCES TCities (intCityID ) ON DELETE CASCADE
 -- --------------------------------------------------------------------------------
 INSERT INTO TStates( intStateID, strState)
 VALUES	           (1, 'Ohio')
-	                ,(2, 'Kentucky')
-	                ,(3, 'Indiana')
+	          ,(2, 'Kentucky')
+	          ,(3, 'Indiana')
 
 INSERT INTO TCities( intCityID, strCity)
 VALUES	           (1, 'Cincinnati')
@@ -220,8 +220,8 @@ VALUES	         (1, 'Hispanic')
 
 INSERT INTO TGenders( intGenderID, strGender)
 VALUES	            (1, 'Male')
-                  ,(2, 'Female')
-                  ,(3, 'Other')
+                   ,(2, 'Female')
+                   ,(3, 'Other')
 
 INSERT INTO TCustomers (intCustomerID, strFirstName, strLastName, strAddress, intCityID, intStateID, strZip, dtmDateOfBirth, intRaceID, intGenderID)
 VALUES	               (1, 'James', 'Jones', '321 Elm St.', 1, 1, '45201', '1/1/1997', 1, 1)
@@ -237,15 +237,15 @@ VALUES	             (1, 'Ordered')
 
 
 INSERT INTO TOrders ( intOrderID, intCustomerID, strOrderNumber, intStatusID, dtmOrderDate)
-VALUES	           ( 1, 1, '10101010', 2, '8/28/2017')
-                  ,( 2, 1, '20202020', 1, '8/28/2007')
-                  ,( 3, 2, '30303030', 3, '6/28/2017')
+VALUES	            ( 1, 1, '10101010', 2, '8/28/2017')
+                   ,( 2, 1, '20202020', 1, '8/28/2007')
+                   ,( 3, 2, '30303030', 3, '6/28/2017')
 					        ,( 4, 4, '40404040', 3, '5/28/2007')
 
 INSERT INTO TVendors ( intVendorID, strVendorName, strAddress, intCityID, intStateID, strZip, strContactFirstName, strContactLastName, strContactPhone, strContactEmail)
-VALUES	 (1, 'TreesRUs', '321 Elm St.', 1, 1, '45201', 'Iwana', 'Cleantooth', '555-555-5555', 'Icleantooth@treesrus.com')
-        ,(2, 'ShirtsRUs', '987 Main St.', 3, 1, '45218', 'Eilene', 'Totheright' , '666-666-6666', 'etotheright@shirtsrus.com')
-        ,(3, 'ToysRUs', '1569 Windisch Rd.', 5, 1, '45069', 'Mike', 'Metosing', '888-888-8888', 'mmetosing@toysrus.com')					  
+VALUES	 	(1, 'TreesRUs', '321 Elm St.', 1, 1, '45201', 'Iwana', 'Cleantooth', '555-555-5555', 'Icleantooth@treesrus.com')
+        	,(2, 'ShirtsRUs', '987 Main St.', 3, 1, '45218', 'Eilene', 'Totheright' , '666-666-6666', 'etotheright@shirtsrus.com')
+        	,(3, 'ToysRUs', '1569 Windisch Rd.', 5, 1, '45069', 'Mike', 'Metosing', '888-888-8888', 'mmetosing@toysrus.com')					  
 
 INSERT INTO TProductCategories( intProductCategoryID, strProductCategory)
 VALUES	                      (1, 'Every Day')
@@ -259,12 +259,12 @@ VALUES	             (1, 1,'Toothpicks', .10, .40, 1, 100000)
                     ,(3, 3,'uPlay', 44.10, 85.40, 3, 3)
 
 INSERT INTO TOrderProducts ( intOrderProductID, intOrderID, intProductID)
-VALUES	 ( 1, 1, 1 )
-        ,( 2, 1, 2 )
-        ,( 3, 2, 3 )
-        ,( 4, 3, 2 )
-        ,( 5, 3, 3 )
-        ,( 6, 4, 3 )
+VALUES	 		 ( 1, 1, 1 )
+       			,( 2, 1, 2 )
+        		,( 3, 2, 3 )
+        		,( 4, 3, 2 )
+        		,( 5, 3, 3 )
+        		,( 6, 4, 3 )
 
 
 -- --------------------------------------------------------------------------------
@@ -275,19 +275,19 @@ VALUES	 ( 1, 1, 1 )
 -- and the products on the order.  Order the list based on customer and order date. 
 
 Select	 TC.intCustomerID
-	      ,TC.strFirstName
-	      ,TC.strLastName
+	,TC.strFirstName
+	,TC.strLastName
         ,TOR.intOrderID
         ,TOR.dtmOrderDate
         ,TP.intProductID
         ,TP.strProductName
 From TCustomers AS TC 
 JOIN TOrders AS TOR
-	      ON TC.intCustomerID = TOR.intCustomerID
+	ON TC.intCustomerID = TOR.intCustomerID
 JOIN TOrderProducts AS TORP
-	      ON TORP.intOrderID = TOR.intOrderID
+	ON TORP.intOrderID = TOR.intOrderID
 JOIN TProducts AS TP
-	      ON TP.intProductID = TORP.intProductID
+	ON TP.intProductID = TORP.intProductID
 Order By 
         TC.strLastName ASC
         ,TC.strFirstName ASC
@@ -307,9 +307,9 @@ Select   TP.intProductID
         ,TPC.strProductCategory		
 From TProducts AS TP 
 JOIN TProductCategories AS TPC
-	      ON TP.intProductCategoryID = TPC.intProductCategoryID
+	ON TP.intProductCategoryID = TPC.intProductCategoryID
 JOIN TVendors AS TV
-	      ON TV.intVendorID = TP.intVendorID
+	ON TV.intVendorID = TP.intVendorID
 Order By 
         TV.strVendorName
         ,TPC.strProductCategory
@@ -331,9 +331,9 @@ From TProducts AS TP
 JOIN TVendors AS TV
 	      ON TV.intVendorID = TP.intVendorID
 Where 
-	      TP.intInventory < 10	  
+	TP.intInventory < 10	  
 Order By 
-	      TP.strProductName
+	TP.strProductName
 
 
 -- Write an explicit join that shows all products order by males older than 21.  
@@ -348,20 +348,20 @@ Select	 TC.intCustomerID
         ,TP.strProductName
 From TCustomers AS TC 
 JOIN TOrders AS TOR
-	      ON TC.intCustomerID = TOR.intCustomerID
+	ON TC.intCustomerID = TOR.intCustomerID
 JOIN TOrderProducts AS TORP
-	      ON TORP.intOrderID = TOR.intOrderID
+	ON TORP.intOrderID = TOR.intOrderID
 JOIN TProducts AS TP
-	      ON TP.intProductID = TORP.intProductID
+	ON TP.intProductID = TORP.intProductID
 JOIN TGenders AS TG 
-	      ON TG.intGenderID = TC.intGenderID
+	ON TG.intGenderID = TC.intGenderID
 JOIN TRaces AS TR
-	      ON TR.intRaceID = TC.intRaceID
+	ON TR.intRaceID = TC.intRaceID
 Where 
-	      TC.dtmDateOfBirth < '1/1/1997'
-	      and TG.strGender = 'Male'
+	TC.dtmDateOfBirth < '1/1/1997'
+	and TG.strGender = 'Male'
 Order By 
-	      TR.intRaceID 
+	TR.intRaceID 
 
 
 
@@ -377,14 +377,14 @@ Select Distinct  TV.strVendorName
                 ,TS.strState
 From TCustomers AS TC 
 JOIN TOrders AS TOR
-	              ON TC.intCustomerID = TOR.intCustomerID
+	        ON TC.intCustomerID = TOR.intCustomerID
 JOIN TOrderProducts AS TORP
-	              ON TORP.intOrderID = TOR.intOrderID
+	        ON TORP.intOrderID = TOR.intOrderID
 JOIN TProducts AS TP
-	              ON TP.intProductID = TORP.intProductID
+	        ON TP.intProductID = TORP.intProductID
 JOIN TStates AS TS 
-	              ON TS.intStateID = TC.intStateID
+	        ON TS.intStateID = TC.intStateID
 JOIN TVendors AS TV
-	              ON TV.intVendorID = TP.intVendorID
+	        ON TV.intVendorID = TP.intVendorID
 Order By 
 	      TS.strState, TV.strVendorName
